@@ -120,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Stagger Cards
         const staggers = [
             { trigger: '.work', elements: '.work__card' },
-            { trigger: '.services', elements: '.services__card' },
             { trigger: '.process', elements: '.process__step' },
             { trigger: '.tech', elements: '.tech__category' }
         ];
@@ -137,6 +136,67 @@ document.addEventListener('DOMContentLoaded', () => {
                 );
             }
         });
+
+        // Services Entrance (Custom Physics)
+        const servicesGrid = document.querySelector('.services__grid');
+        const servicesCards = document.querySelectorAll('.services__card');
+        if (servicesGrid && servicesCards.length > 0) {
+            gsap.fromTo(servicesCards,
+                { opacity: 0, y: 40 },
+                {
+                    opacity: 1, y: 0,
+                    duration: 0.6,
+                    ease: "power2.out",
+                    stagger: 0.1,
+                    scrollTrigger: {
+                        trigger: servicesGrid,
+                        start: "top 80%", // wait until 20% in view
+                        toggleActions: "play none none none"
+                    }
+                }
+            );
+        }
+
+        // Contact Entrance (Custom Physics)
+        const contactOptions = document.querySelector('.contact__options');
+        const contactCards = document.querySelectorAll('.contact__card');
+        if (contactOptions && contactCards.length > 0) {
+            gsap.fromTo(contactCards,
+                { opacity: 0, y: 40 },
+                {
+                    opacity: 1, y: 0,
+                    duration: 0.8,
+                    delay: 0.2, // global delay specified by user
+                    ease: "power2.out",
+                    stagger: 0.1, // delay between option1 and option2
+                    scrollTrigger: {
+                        trigger: contactOptions,
+                        start: "top 85%", 
+                        toggleActions: "play none none none"
+                    }
+                }
+            );
+        }
+
+        // Testimonials Entrance (Framer Motion replica)
+        const ptGrid = document.querySelector('.pt-grid-wrapper');
+        const ptCols = document.querySelectorAll('.pt-col');
+        if (ptGrid && ptCols.length > 0) {
+            gsap.fromTo(ptCols,
+                { opacity: 0, y: 50, rotation: -2 },
+                {
+                    opacity: 1, y: 0, rotation: 0,
+                    duration: 1.2,
+                    ease: "power3.out", // close to 0.16,1,0.3,1
+                    stagger: 0.15,
+                    scrollTrigger: {
+                        trigger: ptGrid,
+                        start: "top 85%",
+                        toggleActions: "play none none none"
+                    }
+                }
+            );
+        }
     }
 
 
@@ -336,7 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     // 4. ANIMATED HERO (BRIDGE SECTION) LOGIC
     // ==========================================================================
-    const rotatingWords = document.querySelectorAll('.bridge__word:not(.bridge__word--measure)');
+    const rotatingWords = document.querySelectorAll('.bridge__word');
     if (rotatingWords.length > 0) {
         let currentWordIndex = 0;
         
@@ -345,17 +405,17 @@ document.addEventListener('DOMContentLoaded', () => {
             currentWord.classList.remove('bridge__word--active');
             currentWord.classList.add('bridge__word--exit');
             
-            // Revert state subtly after exit transition finishes
+            // Revert state after exit transition finishes (1000ms per user spec)
             setTimeout(() => {
                 currentWord.classList.remove('bridge__word--exit');
-            }, 800);
+            }, 1000);
             
             currentWordIndex = (currentWordIndex + 1) % rotatingWords.length;
             
             const nextWord = rotatingWords[currentWordIndex];
             nextWord.classList.add('bridge__word--active');
             
-        }, 2000);
+        }, 2000); // Rotate every 2s
     }
 
     // ==========================================================================
