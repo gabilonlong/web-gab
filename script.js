@@ -214,13 +214,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             );
 
-            // 3D Tilt Logic
+            // 3D Tilt & Shine Logic
             pCards.forEach(card => {
                 const inner = card.querySelector('.pcard-inner');
+                const shine = card.querySelector('.pcard-shine');
                 
-                // GSAP quick setter for performance
-                const xTo = gsap.quickTo(inner, "rotationY", { duration: 0.4, ease: "power2.out" });
-                const yTo = gsap.quickTo(inner, "rotationX", { duration: 0.4, ease: "power2.out" });
+                // GSAP quick setters for 60fps performance
+                const xTo = gsap.quickTo(inner, "rotationY", { duration: 0.5, ease: "power2.out" });
+                const yTo = gsap.quickTo(inner, "rotationX", { duration: 0.5, ease: "power2.out" });
+                const shineXTo = gsap.quickTo(shine, "x", { duration: 0.1, ease: "none" });
+                const shineYTo = gsap.quickTo(shine, "y", { duration: 0.1, ease: "none" });
 
                 card.addEventListener('mousemove', (e) => {
                     const rect = card.getBoundingClientRect();
@@ -229,22 +232,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     const x = e.clientX - rect.left;
                     const y = e.clientY - rect.top;
                     
-                    // Calculate rotation angles (-10deg to 10deg)
-                    const rotateY = ((x / width) - 0.5) * 20;
-                    const rotateX = ((y / height) - 0.5) * -20;
+                    // Calculate rotation angles (-15deg to 15deg for more impact)
+                    const rotateY = ((x / width) - 0.5) * 30;
+                    const rotateX = ((y / height) - 0.5) * -30;
                     
                     xTo(rotateY);
                     yTo(rotateX);
+
+                    // Move shine overlay based on mouse
+                    const moveX = ((x / width) - 0.5) * 40;
+                    const moveY = ((y / height) - 0.5) * 40;
+                    gsap.set(shine, {
+                        background: `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.2) 0%, transparent 80%)`
+                    });
                 });
 
                 card.addEventListener('mouseleave', () => {
                     xTo(0);
                     yTo(0);
-                    gsap.to(inner, { scale: 1, duration: 0.4 });
+                    gsap.to(inner, { 
+                        scale: 1, 
+                        duration: 0.6, 
+                        ease: "elastic.out(1, 0.75)" 
+                    });
                 });
                 
                 card.addEventListener('mouseenter', () => {
-                    gsap.to(inner, { scale: 1.02, duration: 0.4 });
+                    gsap.to(inner, { 
+                        scale: 1.04, 
+                        duration: 0.4, 
+                        ease: "power2.out" 
+                    });
                 });
             });
         }

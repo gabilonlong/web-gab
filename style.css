@@ -504,6 +504,8 @@ ul {
     border-radius: 0.75rem; /* rounded-xl */
     overflow: hidden;
     transform-style: preserve-3d;
+    backface-visibility: hidden; /* Prevent jitter/flicker */
+    -webkit-backface-visibility: hidden;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); /* shadow-lg */
     height: calc(100% - 2rem);
     width: calc(100% - 2rem);
@@ -526,9 +528,27 @@ ul {
     z-index: 2;
 }
 
+.pcard-shine {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(255, 255, 255, 0.15) 0%,
+        transparent 80%
+    );
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.pcard-3d:hover .pcard-shine {
+    opacity: 1;
+}
+
 .pcard-content {
     position: relative;
-    z-index: 3;
+    z-index: 4;
     height: 100%;
     padding: 1.5rem; /* p-6 */
     display: flex;
@@ -555,7 +575,8 @@ ul {
     font-weight: 700;
     margin-bottom: 0;
     transform: translateZ(50px); /* Primary Depth */
-    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    -webkit-font-smoothing: antialiased;
 }
 
 .pcard-subtitle {
@@ -573,12 +594,12 @@ ul {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 9999px;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.2); /* ring-1 ring-inset */
     color: white;
-    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     transform: translateZ(60px); /* Max Depth */
 }
 
@@ -588,32 +609,32 @@ ul {
 }
 
 .pcard-link:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: translateZ(70px) scale(1.1) rotate(5deg);
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: translateZ(75px) scale(1.1) rotate(15deg);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
 .pcard-button {
     width: 100%;
     border-radius: 0.75rem;
-    padding: 0.85rem 0;
+    padding: 0.9rem 0;
     text-align: center;
     font-weight: 600;
     color: white;
-    background-color: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1); /* ring-1 ring-inset */
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    border: none;
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     cursor: pointer;
     margin-top: auto;
     transform: translateZ(40px);
 }
 
 .pcard-button:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: translateZ(50px) scale(1.02);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    background-color: rgba(255, 255, 255, 0.18);
+    transform: translateZ(55px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
 }
 
 .pcard-3d:active .pcard-inner {
