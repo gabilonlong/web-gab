@@ -1,6 +1,111 @@
 document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
-    // 1. UTILS & UI INTERACTIONS
+    // 1. HEADER GSAP ANIMATIONS & MAGNETIC BUTTONS
+    // ==========================================================================
+    
+    if (window.gsap) {
+        // Entrance Stagger
+        const headerTl = gsap.timeline();
+        headerTl.fromTo('.nav__logo', 
+            { opacity: 0, y: -20 },
+            { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.2 }
+        )
+        .fromTo('.nav__item',
+            { opacity: 0, y: -20 },
+            { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out' },
+            "-=0.6"
+        );
+
+        // Magnetic Effect
+        const magneticElements = document.querySelectorAll('.nav__link, .nav__btn, .nav__logo, .contact__social-link, .btn-contact-primary, .footer__links a');
+        magneticElements.forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const position = el.getBoundingClientRect();
+                const x = e.clientX - position.left - position.width / 2;
+                const y = e.clientY - position.top - position.height / 2;
+                
+                gsap.to(el, {
+                    x: x * 0.3,
+                    y: y * 0.3,
+                    duration: 0.5,
+                    ease: 'power2.out'
+                });
+            });
+
+            el.addEventListener('mouseleave', () => {
+                gsap.to(el, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.7,
+                    ease: 'elastic.out(1, 0.3)'
+                });
+            });
+        });
+    }
+
+    // ==========================================================================
+    // 1.5. HERO SPLIT-TEXT & MOUSE PARALLAX
+    // ==========================================================================
+    const heroHeadline = document.querySelector('.hero-headline');
+    if (heroHeadline && window.gsap) {
+        // Simple SplitText replica
+        const words = heroHeadline.innerText.split(' ');
+        heroHeadline.innerHTML = '';
+        words.forEach(word => {
+            const wordWrap = document.createElement('span');
+            wordWrap.style.display = 'inline-block';
+            wordWrap.style.overflow = 'hidden';
+            wordWrap.style.marginRight = '0.3em'; // Space logic
+
+            const wordInner = document.createElement('span');
+            wordInner.style.display = 'inline-block';
+            wordInner.innerText = word;
+            wordInner.classList.add('hero-word-inner');
+            
+            wordWrap.appendChild(wordInner);
+            heroHeadline.appendChild(wordWrap);
+        });
+
+        // Entrance animation
+        const heroTl = gsap.timeline({ delay: 0.5 }); // Let loading finish
+        heroTl.fromTo('.hero-word-inner',
+            { y: '100%', opacity: 0 },
+            { y: '0%', opacity: 1, duration: 1.2, stagger: 0.08, ease: 'power4.out' }
+        )
+        .fromTo(['.hero-subtitle', '.hero-cta'],
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: 'power3.out' },
+            "-=0.6"
+        );
+    }
+
+    // Hero Background Mouse Parallax
+    const heroSection = document.querySelector('.hero-container');
+    const heroMedia = document.querySelector('.hero-video-wrapper');
+    if (heroSection && heroMedia && window.gsap) {
+        // slightly scale up the wrapper to allow panning without showing edges
+        heroMedia.style.transform = 'scale(1.05)';
+        
+        heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+            gsap.to(heroMedia, {
+                x: x * 40,
+                y: y * 40,
+                duration: 1,
+                ease: 'power2.out'
+            });
+        });
+
+        heroSection.addEventListener('mouseleave', () => {
+            gsap.to(heroMedia, { x: 0, y: 0, duration: 1, ease: 'power2.out' });
+        });
+    }
+
+    // ==========================================================================
+    // 2. UTILS & UI INTERACTIONS
     // ==========================================================================
     
     // Custom Cursor
@@ -87,20 +192,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Portfolio Section Entrance with Staggered Cards
+        // Portfolio Section Entrance & 3D Tilt Logic
         const portfolioSection = document.querySelector('.portfolio');
-        if (portfolioSection) {
-            gsap.to(portfolioSection, {
-                opacity: 1, y: 0, duration: 1, ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: portfolioSection,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none'
-                }
-            });
-            
-            // Staggered cards entrance
-            gsap.fromTo('.interactive-card', 
+        const pCards = document.querySelectorAll('.pcard-3d');
+        
+        if (portfolioSection && pCards.length > 0) {
+            // Entrance animation
+            gsap.fromTo(pCards, 
                 { opacity: 0, y: 50 },
                 { 
                     opacity: 1, 
@@ -115,27 +213,60 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             );
+
+            // 3D Tilt Logic
+            pCards.forEach(card => {
+                const inner = card.querySelector('.pcard-inner');
+                
+                // GSAP quick setter for performance
+                const xTo = gsap.quickTo(inner, "rotationY", { duration: 0.4, ease: "power2.out" });
+                const yTo = gsap.quickTo(inner, "rotationX", { duration: 0.4, ease: "power2.out" });
+
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const width = rect.width;
+                    const height = rect.height;
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    // Calculate rotation angles (-10deg to 10deg)
+                    const rotateY = ((x / width) - 0.5) * 20;
+                    const rotateX = ((y / height) - 0.5) * -20;
+                    
+                    xTo(rotateY);
+                    yTo(rotateX);
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    xTo(0);
+                    yTo(0);
+                    gsap.to(inner, { scale: 1, duration: 0.4 });
+                });
+                
+                card.addEventListener('mouseenter', () => {
+                    gsap.to(inner, { scale: 1.02, duration: 0.4 });
+                });
+            });
         }
 
-        // Stagger Cards
-        const staggers = [
-            { trigger: '.work', elements: '.work__card' },
-            { trigger: '.process', elements: '.process__step' },
-            { trigger: '.tech', elements: '.tech__category' }
-        ];
-
-        staggers.forEach(({ trigger, elements }) => {
-            const els = document.querySelectorAll(elements);
-            if(els.length > 0) {
-                gsap.fromTo(els, 
-                    { opacity: 0, y: 20 },
-                    {
-                        opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power2.out',
-                        scrollTrigger: { trigger: trigger, start: 'top 75%' }
+        // Process Section Staggered Entrance
+        const processCards = document.querySelectorAll('.process__card');
+        if (processCards.length > 0) {
+            gsap.fromTo(processCards, 
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1, y: 0, 
+                    duration: 0.8, 
+                    stagger: 0.15, 
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '.process__grid',
+                        start: 'top 80%',
+                        toggleActions: 'play none none none'
                     }
-                );
-            }
-        });
+                }
+            );
+        }
 
         // Services Entrance (Custom Physics)
         const servicesGrid = document.querySelector('.services__grid');
@@ -214,7 +345,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const heroContent = document.querySelector('.hero-content');
         const headline = document.querySelector('.hero-headline');
         const subheading = document.querySelector('.hero-subheading');
-        const cta = document.querySelector('.hero-cta');
 
         // Configuration
         const frameCount = 480;
@@ -334,9 +464,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (scrollProgress >= 0.25) subheading.classList.add('is-visible');
                 else subheading.classList.remove('is-visible');
-
-                if (scrollProgress >= 0.55) cta.classList.add('is-visible');
-                else cta.classList.remove('is-visible');
             });
         }
 
@@ -349,6 +476,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 ticking = true;
             }
         });
+
+        if (heroContainer) {
+            heroContainer.style.cursor = 'pointer';
+            heroContainer.title = 'Click to open the door';
+            heroContainer.addEventListener('click', () => {
+                const start = window.scrollY;
+                const end = heroContainer.offsetTop + (heroContainer.offsetHeight - window.innerHeight);
+                const duration = 1800; // 1.8 seconds smooth play
+                const startTime = performance.now();
+                
+                function smoothScroll(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // EaseInOutCubic
+                    const ease = progress < 0.5 
+                        ? 4 * progress * progress * progress 
+                        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                        
+                    window.scrollTo(0, start + (end - start) * ease);
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(smoothScroll);
+                    }
+                }
+                requestAnimationFrame(smoothScroll);
+            });
+        }
 
         preloadImages();
     }
@@ -419,26 +574,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
-    // 5. 3D INTERACTIVE CARDS (PORTFOLIO)
+    // 6. 3D INTERACTIVE CARDS (PORTFOLIO)
     // ==========================================================================
     const cards = document.querySelectorAll('.interactive-card');
     cards.forEach(card => {
+        // Custom Cursor "Voir" state mapping
+        card.addEventListener('mouseenter', () => {
+            const cursor = document.querySelector('.custom-cursor');
+            if(cursor) {
+                cursor.classList.add('view-project');
+                cursor.innerHTML = '<span>Voir</span>';
+            }
+        });
+
+        card.addEventListener('mouseleave', () => {
+            const cursor = document.querySelector('.custom-cursor');
+            if(cursor) {
+                cursor.classList.remove('view-project');
+                cursor.innerHTML = '';
+            }
+        });
+
         let xTo, yTo;
         if(window.gsap && gsap.quickTo) {
-            // Using GSAP quickTo for highly performant spring-like physics
-            xTo = gsap.quickTo(card, "rotateY", {duration: 0.6, ease: "power3.out"});
-            yTo = gsap.quickTo(card, "rotateX", {duration: 0.6, ease: "power3.out"});
+            // Spring physics matching Framer Motion: damping=15, stiffness=150
+            // ζ ≈ 0.61 (underdamped), settling ≈ 0.5s → elastic.out for spring overshoot
+            xTo = gsap.quickTo(card, "rotateY", {duration: 0.5, ease: "elastic.out(1, 0.4)"});
+            yTo = gsap.quickTo(card, "rotateX", {duration: 0.5, ease: "elastic.out(1, 0.4)"});
         }
 
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const xPct = (e.clientX - rect.left) / rect.width - 0.5;
             const yPct = (e.clientY - rect.top) / rect.height - 0.5;
-            
-            // Map [-0.5, 0.5] to degrees match Framer Motion logic
-            const rotateX = yPct * -21; 
-            const rotateY = xPct * 21;  
-            
+
+            // ±10.5deg tilt matching Framer Motion InteractiveTravelCard ref
+            const rotateX = yPct * -10.5;
+            const rotateY = xPct * 10.5;
+
             if (xTo && yTo) {
                 xTo(rotateY);
                 yTo(rotateX);
@@ -452,11 +625,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 xTo(0);
                 yTo(0);
             } else {
-                card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
                 card.style.transform = `rotateX(0deg) rotateY(0deg)`;
-                setTimeout(() => { card.style.transition = ''; }, 600);
+                setTimeout(() => { card.style.transition = ''; }, 500);
             }
         });
     });
+
+    // ==========================================================================
+    // 7. CONTACT REVEAL ANIMATION
+    // ==========================================================================
+    const contactSection = document.querySelector('.contact');
+    const contactContainer = document.querySelector('.contact__container');
+    if (contactSection && contactContainer) {
+        gsap.fromTo(contactContainer, 
+            { opacity: 0, scale: 0.9, y: 50 },
+            {
+                opacity: 1, scale: 1, y: 0,
+                duration: 1.2, ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: contactSection,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            }
+        );
+    }
 
 });
