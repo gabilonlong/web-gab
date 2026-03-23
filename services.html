@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Visual Desire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <div class="film-grain"></div>
+    <div class="custom-cursor"></div>
+
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="nav__logo">STUDIO</a>
+            <div class="nav__menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav__list">
+                <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="portfolio.html" class="nav__link">Work</a></li>
+                <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                <li class="nav__item"><a href="process.html" class="nav__link">Process</a></li>
+                <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                <li class="nav__item"><a href="contact.html" class="nav__btn">Get in Touch</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Cinematic Header -->
+        <section class="page-header" style="background: linear-gradient(180deg, rgba(19,19,19,0.2) 0%, rgba(19,19,19,1) 100%), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop') no-repeat center center/cover;">
+            <div class="page-header__content">
+                <h1 class="page-header__title section-hidden">Expertise</h1>
+                <p class="page-header__subtitle section-hidden">Crafting digital experiences that captivate, engage, and elevate your brand.</p>
+            </div>
+        </section>
+
+        <!-- Services Section Grid -->
+        <section class="services section">
+            <div class="container">
+                <div class="services__grid" style="grid-template-columns: repeat(2, 1fr); gap: 1px;">
+                    <div class="services__card section-hidden">
+                        <span class="services__num">01</span>
+                        <h3 class="services__name">Creative Direction & Design</h3>
+                        <p class="services__desc">Bespoke, pixel-perfect interfaces designed from scratch to uniquely represent your brand identity. Clean, minimalist aesthetics meeting high-end editorial layouts.</p>
+                        <br>
+                        <ul class="tech__tags" style="margin-top: 15px;">
+                            <li class="tech__tag">UI/UX Design</li>
+                            <li class="tech__tag">Brand Identity</li>
+                            <li class="tech__tag">Figma Prototyping</li>
+                        </ul>
+                    </div>
+                    <div class="services__card section-hidden">
+                        <span class="services__num">02</span>
+                        <h3 class="services__name">Interactive 3D Animations</h3>
+                        <p class="services__desc">Immersive web experiences using Three.js and WebGL to bring your ideas to life with state-of-the-art motion graphics and depth mapping.</p>
+                        <br>
+                        <ul class="tech__tags" style="margin-top: 15px;">
+                            <li class="tech__tag">WebGL</li>
+                            <li class="tech__tag">GSAP</li>
+                            <li class="tech__tag">Three.js</li>
+                        </ul>
+                    </div>
+                    <div class="services__card section-hidden">
+                        <span class="services__num">03</span>
+                        <h3 class="services__name">Premium Front-End Development</h3>
+                        <p class="services__desc">Lightning-fast load times and smooth 60fps animations ensuring your premium experience feels flawless on all devices. Scalable and accessible code architecture.</p>
+                        <br>
+                        <ul class="tech__tags" style="margin-top: 15px;">
+                            <li class="tech__tag">Modern JS</li>
+                            <li class="tech__tag">Responsive CSS</li>
+                            <li class="tech__tag">Accessibility</li>
+                        </ul>
+                    </div>
+                    <div class="services__card section-hidden">
+                        <span class="services__num">04</span>
+                        <h3 class="services__name">Performance Optimization</h3>
+                        <p class="services__desc">Ensuring your cinematic site maintains pristine scores on Lighthouse without sacrificing visual fidelity. Asset optimization, caching, and lazy loading strategies.</p>
+                        <br>
+                        <ul class="tech__tags" style="margin-top: 15px;">
+                            <li class="tech__tag">Core Web Vitals</li>
+                            <li class="tech__tag">Asset Delivery</li>
+                            <li class="tech__tag">SEO Strategy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to action -->
+        <section class="section" style="text-align: center;">
+            <div class="container">
+                <h2 class="section__title section-hidden">Need a custom approach?</h2>
+                <a href="contact.html" class="hero-cta section-hidden">Discuss your project</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__container">
+            <p class="footer__copy">&copy; 2026 STUDIO. All rights reserved.</p>
+            <div class="footer__links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

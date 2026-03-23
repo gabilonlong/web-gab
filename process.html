@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process | Visual Desire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <div class="film-grain"></div>
+    <div class="custom-cursor"></div>
+
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="nav__logo">STUDIO</a>
+            <div class="nav__menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav__list">
+                <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="portfolio.html" class="nav__link">Work</a></li>
+                <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                <li class="nav__item"><a href="process.html" class="nav__link">Process</a></li>
+                <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                <li class="nav__item"><a href="contact.html" class="nav__btn">Get in Touch</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Cinematic Header -->
+        <section class="page-header" style="background: linear-gradient(180deg, rgba(19,19,19,0.2) 0%, rgba(19,19,19,1) 100%), url('https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=2000&auto=format&fit=crop') no-repeat center center/cover;">
+            <div class="page-header__content">
+                <h1 class="page-header__title section-hidden">The Method</h1>
+                <p class="page-header__subtitle section-hidden">A refined approach from initial concept to immaculate execution.</p>
+            </div>
+        </section>
+
+        <!-- Vertical Process Steps -->
+        <section class="process section">
+            <div class="container" style="max-width: 800px; margin: 0 auto;">
+                <div style="display: flex; flex-direction: column; gap: 80px;">
+                    
+                    <div class="process__step section-hidden" style="display: grid; grid-template-columns: 80px 1fr; gap: 20px;">
+                        <div class="process__num" style="margin-top: 0; width: 60px; height: 60px; font-size: 1.2rem;">01</div>
+                        <div>
+                            <h3 class="process__name" style="font-size: 1.5rem; color: var(--clr-accent-1);">DISCOVERY</h3>
+                            <p class="process__desc" style="font-size: 1.1rem; margin-top: 15px;">Understanding your vision, business goals, and current digital footprint. We establish the moodboards, creative direction, and technological stack tailored exactly to your brand's unique needs.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process__step section-hidden" style="display: grid; grid-template-columns: 80px 1fr; gap: 20px;">
+                        <div class="process__num" style="margin-top: 0; width: 60px; height: 60px; font-size: 1.2rem;">02</div>
+                        <div>
+                            <h3 class="process__name" style="font-size: 1.5rem; color: var(--clr-accent-1);">DESIGN</h3>
+                            <p class="process__desc" style="font-size: 1.1rem; margin-top: 15px;">Crafting pixel-perfect layouts, interactive prototypes, and motion design concepts in Figma. We focus heavily on typography, spacing, and the "Stitch" aesthetic to assure a premium feel.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process__step section-hidden" style="display: grid; grid-template-columns: 80px 1fr; gap: 20px;">
+                        <div class="process__num" style="margin-top: 0; width: 60px; height: 60px; font-size: 1.2rem;">03</div>
+                        <div>
+                            <h3 class="process__name" style="font-size: 1.5rem; color: var(--clr-accent-1);">DEVELOPMENT</h3>
+                            <p class="process__desc" style="font-size: 1.1rem; margin-top: 15px;">Building fast, optimized, beautiful code. Translating static designs into fluid experiences using native Web APIs alongside GSAP/Three.js for highly performant animations.</p>
+                        </div>
+                    </div>
+
+                    <div class="process__step section-hidden" style="display: grid; grid-template-columns: 80px 1fr; gap: 20px;">
+                        <div class="process__num" style="margin-top: 0; width: 60px; height: 60px; font-size: 1.2rem;">04</div>
+                        <div>
+                            <h3 class="process__name" style="font-size: 1.5rem; color: var(--clr-accent-1);">LAUNCH & EVOLVE</h3>
+                            <p class="process__desc" style="font-size: 1.1rem; margin-top: 15px;">Rigorous cross-browser testing, SEO optimization, and final deployment. We maintain an ongoing relationship to ensure the product evolves flawlessly with your digital strategy.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        
+        <section class="section" style="text-align: center;">
+            <div class="container">
+                <a href="portfolio.html" class="hero-cta section-hidden">See the Results</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__container">
+            <p class="footer__copy">&copy; 2026 STUDIO. All rights reserved.</p>
+            <div class="footer__links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

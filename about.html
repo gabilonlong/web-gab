@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Visual Desire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <div class="film-grain"></div>
+    <div class="custom-cursor"></div>
+
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="nav__logo">STUDIO</a>
+            <div class="nav__menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav__list">
+                <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="portfolio.html" class="nav__link">Work</a></li>
+                <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                <li class="nav__item"><a href="process.html" class="nav__link">Process</a></li>
+                <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                <li class="nav__item"><a href="contact.html" class="nav__btn">Get in Touch</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Cinematic Header -->
+        <section class="page-header" style="background: linear-gradient(180deg, rgba(19,19,19,0.2) 0%, rgba(19,19,19,1) 100%), url('https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=2000&auto=format&fit=crop') no-repeat center center/cover;">
+            <div class="page-header__content">
+                <h1 class="page-header__title section-hidden">Philosophy</h1>
+                <p class="page-header__subtitle section-hidden">Driven by minimal aesthetics and maximum impact.</p>
+            </div>
+        </section>
+
+        <!-- Premium About Component -->
+        <section class="premium-about section">
+            <div class="container" style="max-width: 1400px; padding: 0 4vw;">
+                
+                <!-- Header -->
+                <div class="premium-about__header section-hidden">
+                    <span class="premium-about__tagline">DISCOVER MY CRAFT</span>
+                    <h2 class="premium-about__title">Who I Am</h2>
+                    <p class="premium-about__desc">I'm a web developer specializing in premium experiences with cutting-edge animations. With a passion for crafting immersive digital journeys, I transform complex visions into seamless, beautiful websites. Every pixel is intentional, every animation purposeful.</p>
+                </div>
+
+                <!-- 3-Column Services Grid -->
+                <div class="premium-about__grid">
+                    <!-- Left Services -->
+                    <div class="premium-about__col premium-about__col--left">
+                        <div class="service-item section-hidden">
+                            <span class="service-icon">01</span>
+                            <div class="service-content">
+                                <h3 class="service-name">CONCEPT</h3>
+                                <p class="service-desc">Define the vision and strategy behind your digital presence.</p>
+                            </div>
+                        </div>
+                        <div class="service-item section-hidden">
+                            <span class="service-icon">02</span>
+                            <div class="service-content">
+                                <h3 class="service-name">DESIGN</h3>
+                                <p class="service-desc">Craft beautiful, intuitive interfaces that captivate and convert.</p>
+                            </div>
+                        </div>
+                        <div class="service-item section-hidden">
+                            <span class="service-icon">03</span>
+                            <div class="service-content">
+                                <h3 class="service-name">ANIMATION</h3>
+                                <p class="service-desc">Bring designs to life with smooth, cinematic animations and interactions.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Center Image -->
+                    <div class="premium-about__col premium-about__col--center section-hidden">
+                        <div class="premium-about__img-wrap">
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1500&auto=format&fit=crop" alt="Web Development Portfolio" class="premium-about__img">
+                        </div>
+                        <div style="text-align: center; margin-top: 40px;">
+                            <a href="portfolio.html" class="hero-cta">View My Work</a>
+                        </div>
+                    </div>
+
+                    <!-- Right Services -->
+                    <div class="premium-about__col premium-about__col--right">
+                        <div class="service-item section-hidden">
+                            <span class="service-icon">04</span>
+                            <div class="service-content">
+                                <h3 class="service-name">DEVELOPMENT</h3>
+                                <p class="service-desc">Build fast, scalable, optimized code that powers exceptional experiences.</p>
+                            </div>
+                        </div>
+                        <div class="service-item section-hidden">
+                            <span class="service-icon">05</span>
+                            <div class="service-content">
+                                <h3 class="service-name">OPTIMIZATION</h3>
+                                <p class="service-desc">Ensure peak performance and perfect user experience across all devices.</p>
+                            </div>
+                        </div>
+                        <div class="service-item section-hidden">
+                            <span class="service-icon">06</span>
+                            <div class="service-content">
+                                <h3 class="service-name">DEPLOYMENT</h3>
+                                <p class="service-desc">Launch your project flawlessly and provide ongoing support.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dark Stats Section -->
+                <div class="premium-about__stats">
+                    <div class="stat-item section-hidden">
+                        <span class="stat-num">45+</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat-item section-hidden">
+                        <span class="stat-num">100%</span>
+                        <span class="stat-label">Satisfaction Rate</span>
+                    </div>
+                    <div class="stat-item section-hidden">
+                        <span class="stat-num">6+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item section-hidden">
+                        <span class="stat-num">14</span>
+                        <span class="stat-label">Awwwards</span>
+                    </div>
+                </div>
+
+                <!-- Final CTA -->
+                <div class="premium-about__cta section-hidden">
+                    <h2 class="premium-about__title">Ready to bring your vision to life?</h2>
+                    <p class="premium-about__desc">Let's create exceptional digital experiences together.</p>
+                    <a href="contact.html" class="hero-cta" style="margin-top: 40px; display: inline-block;">Schedule a meeting</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__container">
+            <p class="footer__copy">&copy; 2026 STUDIO. All rights reserved.</p>
+            <div class="footer__links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

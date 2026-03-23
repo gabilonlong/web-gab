@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work | Visual Desire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <div class="film-grain"></div>
+    <div class="custom-cursor"></div>
+
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="nav__logo">STUDIO</a>
+            <div class="nav__menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav__list">
+                <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="portfolio.html" class="nav__link">Work</a></li>
+                <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                <li class="nav__item"><a href="process.html" class="nav__link">Process</a></li>
+                <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                <li class="nav__item"><a href="contact.html" class="nav__btn">Get in Touch</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Cinematic Header -->
+        <section class="page-header" style="background: linear-gradient(180deg, rgba(19,19,19,0.2) 0%, rgba(19,19,19,1) 100%), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;">
+            <div class="page-header__content">
+                <h1 class="page-header__title section-hidden">Selected Works</h1>
+                <p class="page-header__subtitle section-hidden">A collection of digital experiences blending aesthetic form with seamless function.</p>
+            </div>
+        </section>
+
+        <!-- Full Portfolio Grid -->
+        <section class="work section">
+            <div class="container">
+                <div class="work__grid">
+                    <article class="work__card">
+                        <div class="work__img-wrap">
+                            <div class="work__img" style="background: linear-gradient(45deg, #1f1f1f, #2a2a2a);"></div>
+                            <div class="work__overlay"><span>View Case Study</span></div>
+                        </div>
+                        <div class="work__info">
+                            <h3 class="work__name">Ethereal Beauty</h3>
+                            <p class="work__type">Web Design + Animation</p>
+                            <p class="work__industry">Luxury</p>
+                        </div>
+                    </article>
+                    
+                    <article class="work__card">
+                        <div class="work__img-wrap">
+                            <div class="work__img" style="background: linear-gradient(135deg, #2c2c2c, #1a1a1a);"></div>
+                            <div class="work__overlay"><span>View Case Study</span></div>
+                        </div>
+                        <div class="work__info">
+                            <h3 class="work__name">Nexus Protocol</h3>
+                            <p class="work__type">Web3 Experience</p>
+                            <p class="work__industry">Tech</p>
+                        </div>
+                    </article>
+
+                    <article class="work__card">
+                        <div class="work__img-wrap">
+                            <div class="work__img" style="background: linear-gradient(80deg, #181818, #333333);"></div>
+                            <div class="work__overlay"><span>View Case Study</span></div>
+                        </div>
+                        <div class="work__info">
+                            <h3 class="work__name">Maison Atelier</h3>
+                            <p class="work__type">E-commerce & 3D</p>
+                            <p class="work__industry">Fashion</p>
+                        </div>
+                    </article>
+
+                    <article class="work__card">
+                        <div class="work__img-wrap">
+                            <div class="work__img" style="background: linear-gradient(200deg, #222, #0d0d0d);"></div>
+                            <div class="work__overlay"><span>View Case Study</span></div>
+                        </div>
+                        <div class="work__info">
+                            <h3 class="work__name">Aura Wellness</h3>
+                            <p class="work__type">Brand Identity & Digital</p>
+                            <p class="work__industry">Health</p>
+                        </div>
+                    </article>
+
+                    <article class="work__card">
+                        <div class="work__img-wrap">
+                            <div class="work__img" style="background: linear-gradient(120deg, #303030, #151515);"></div>
+                            <div class="work__overlay"><span>View Case Study</span></div>
+                        </div>
+                        <div class="work__info">
+                            <h3 class="work__name">Velocity Motors</h3>
+                            <p class="work__type">Immersive Landing Page</p>
+                            <p class="work__industry">Automotive</p>
+                        </div>
+                    </article>
+
+                    <article class="work__card">
+                        <div class="work__img-wrap">
+                            <div class="work__img" style="background: linear-gradient(60deg, #1c1c1c, #090909);"></div>
+                            <div class="work__overlay"><span>View Case Study</span></div>
+                        </div>
+                        <div class="work__info">
+                            <h3 class="work__name">Onyx FinTech</h3>
+                            <p class="work__type">Dashboard UI/UX</p>
+                            <p class="work__industry">Finance</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Call to action -->
+        <section class="section" style="text-align: center;">
+            <div class="container">
+                <h2 class="section__title section-hidden">Ready to elevate your digital presence?</h2>
+                <a href="contact.html" class="hero-cta section-hidden">Let's Work Together</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__container">
+            <p class="footer__copy">&copy; 2026 STUDIO. All rights reserved.</p>
+            <div class="footer__links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
