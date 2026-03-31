@@ -3,882 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Visual Desire | Premium Web Creator Portfolio | Stitch Design">
-    <title>Visual Desire | Creative Direction</title>
+    <title>Gabriel Studio | Premium Digital Experiences</title>
     
-    <!-- Fonts: Playfair Display (Serif) & Manrope (Sans-serif) -->
+    <!-- Fonts: Playfair Display for Serifs (replaces Recoleta), Inter for Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=2">
-    
-    <!-- GSAP Custom Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="film-grain"></div>
+    <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
 
     <header class="header">
         <nav class="nav">
-            <a href="#" class="nav__logo">STUDIO</a>
-            <div class="nav__menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
+            <a href="#" class="nav-logo">STUDIO</a>
+            <div class="nav-links">
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#about" class="nav-link">About</a>
+                <button class="nav-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Get in Touch</button>
             </div>
-            <ul class="nav__list">
-                <li class="nav__item"><a href="index.html" class="nav__link active">Home</a></li>
-                <li class="nav__item"><a href="portfolio.html" class="nav__link">Work</a></li>
-                <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-                <li class="nav__item"><a href="process.html" class="nav__link">Process</a></li>
-                <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
-                <li class="nav__item"><a href="contact.html" class="nav__btn">Get in Touch</a></li>
-            </ul>
+            <button class="nav-mobile-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
         </nav>
     </header>
 
     <main>
-        <!-- Canvas Video Scroll Hero Section -->
-        <section id="home" class="hero-container">
-            <div class="hero-sticky">
-                <div class="hero-video-wrapper">
-                    <!-- Video loaded fallback -->
-                    <video id="hero-video-fallback" class="hero-fallback" src="assets/videos/hero-design-process.mp4" muted playsinline></video>
-                    <!-- Canvas for frame-by-frame rendering -->
-                    <canvas id="hero-canvas"></canvas>
-                    
-                    <!-- Loading state overlay -->
-                    <div class="hero-loading" id="hero-loading">
-                        <div class="spinner"></div>
-                    </div>
-
-                    <!-- Subtle grain overlay for video -->
-                    <div class="video-grain"></div>
-                </div>
-
-                <!-- Text overlay -> split right -->
-                <div class="hero-content">
-                    <div class="hero-content-inner">
-                        <p class="hero-subtitle">BIENVENUE DANS MON STUDIO CRÉATIF</p>
-                        <h1 class="hero-headline">I craft immersive digital experiences</h1>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Bridge: Animated Hero Section -->
-        <section id="animated-hero" class="bridge section section-hidden">
-            <!-- Subtle Film Grain Overlay -->
-            <div class="bridge__grain"></div>
-
-            <div class="container bridge__container">
-                <div class="bridge__content">
-                    
-                    <div class="bridge__top-action">
-                        <a href="services.html" class="btn-bridge-badge">
-                            Explore Services
-                            <svg class="icon-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                    
-                    <h2 class="bridge__headline">
-                        <span class="bridge__text-static bridge__text-light">I create</span>
-                        <div class="bridge__rotating-wrapper">
-                            <span class="bridge__word bridge__word--active">premium</span>
-                            <span class="bridge__word">immersive</span>
-                            <span class="bridge__word">cinematic</span>
-                            <span class="bridge__word">innovative</span>
-                            <span class="bridge__word">exceptional</span>
-                        </div>
-                        <span class="bridge__text-static bridge__text-light">web experiences</span>
-                    </h2>
-
-                    <p class="bridge__desc">
-                        I specialize in creating premium web experiences that blend cutting-edge design with seamless animations. Every project is meticulously crafted to captivate, engage, and convert.
-                    </p>
-
-                    <div class="bridge__actions">
-                        <a href="contact.html" class="btn-bridge-outline">
-                            <svg class="icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                            Schedule a Call
-                        </a>
-                        <a href="portfolio.html" class="btn-bridge-primary">
-                            View My Work
-                            <svg class="icon-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Work Section (Portfolio 3D Cards) -->
-        <section id="work" class="portfolio section">
-            <div class="container portfolio__container">
-                <!-- Header -->
-                <div class="portfolio__header">
-                    <span class="portfolio__tagline">MY PORTFOLIO</span>
-                    <h2 class="portfolio__title">Featured Work</h2>
-                    <p class="portfolio__desc">Explore a selection of premium web experiences I've created</p>
-                </div>
-                
-                <!-- Grid of Interactive 3D Cards -->
-                <div class="portfolio__grid">
-                    
-                    <!-- Card 1: HMC Industrial -->
-                    <div class="pcard-3d pcard-featured pcard-hover-1" onclick="window.location.href='portfolio.html'">
-                        <div class="pcard-inner">
-                            <img src="assets/images/mockup_hmc_industrial_1774231318066.png" alt="HMC Industrial Website" class="pcard-bg" loading="lazy">
-                            <div class="pcard-overlay"></div>
-                            <div class="pcard-shine"></div>
-                            
-                            <div class="pcard-content">
-                                <div class="pcard-header">
-                                    <div class="pcard-text-wrap">
-                                        <h3 class="pcard-title">HMC Industrial</h3>
-                                        <p class="pcard-subtitle">Premium Design + Dark Aesthetic</p>
-                                    </div>
-                                    <a href="portfolio.html" class="pcard-link" aria-label="Learn more about HMC">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                                    </a>
-                                </div>
-                                <button class="pcard-button" aria-label="View Case Study">View Case Study</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 2: Spots de Surf -->
-                    <div class="pcard-3d pcard-hover-2" onclick="window.location.href='portfolio.html'">
-                        <div class="pcard-inner">
-                            <img src="assets/images/mockup_surf_spots_1774231333582.png" alt="Spots de Surf" class="pcard-bg" loading="lazy">
-                            <div class="pcard-overlay"></div>
-                            <div class="pcard-shine"></div>
-                            <div class="pcard-content">
-                                <div class="pcard-header">
-                                    <div class="pcard-text-wrap">
-                                        <h3 class="pcard-title">Spots de Surf</h3>
-                                        <p class="pcard-subtitle">3D Scroll Animation + Map Integration</p>
-                                    </div>
-                                    <a href="portfolio.html" class="pcard-link" aria-label="Learn more about surfing project">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                                    </a>
-                                </div>
-                                <button class="pcard-button" aria-label="View Project">View Project</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: DartMaster Pro -->
-                    <div class="pcard-3d pcard-hover-3" onclick="window.location.href='portfolio.html'">
-                        <div class="pcard-inner">
-                            <img src="assets/images/mockup_dartmaster_1774231350727.png" alt="DartMaster Pro" class="pcard-bg" loading="lazy">
-                            <div class="pcard-overlay"></div>
-                            <div class="pcard-shine"></div>
-                            <div class="pcard-content">
-                                <div class="pcard-header">
-                                    <div class="pcard-text-wrap">
-                                        <h3 class="pcard-title">DartMaster Pro</h3>
-                                        <p class="pcard-subtitle">Premium Glassmorphism + Live Scoring</p>
-                                    </div>
-                                    <a href="portfolio.html" class="pcard-link" aria-label="Learn more about DartMaster">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                                    </a>
-                                </div>
-                                <button class="pcard-button" aria-label="View App">View App</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 4: Académie Platform -->
-                    <div class="pcard-3d pcard-hover-4" onclick="window.location.href='portfolio.html'">
-                        <div class="pcard-inner">
-                            <img src="assets/images/mockup_academie_1774231369729.png" alt="Académie Platform" class="pcard-bg" loading="lazy">
-                            <div class="pcard-overlay"></div>
-                            <div class="pcard-shine"></div>
-                            <div class="pcard-content">
-                                <div class="pcard-header">
-                                    <div class="pcard-text-wrap">
-                                        <h3 class="pcard-title">Académie Platform</h3>
-                                        <p class="pcard-subtitle">Gamified Education + Interactive UI</p>
-                                    </div>
-                                    <a href="portfolio.html" class="pcard-link" aria-label="Learn more about Académie">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                                    </a>
-                                </div>
-                                <button class="pcard-button" aria-label="View Case Study">View Case Study</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 5: The Goonies -->
-                    <div class="pcard-3d pcard-hover-5" onclick="window.location.href='portfolio.html'">
-                        <div class="pcard-inner">
-                            <img src="assets/images/mockup_goonies_1774231385157.png" alt="The Goonies" class="pcard-bg" loading="lazy">
-                            <div class="pcard-overlay"></div>
-                            <div class="pcard-shine"></div>
-                            <div class="pcard-content">
-                                <div class="pcard-header">
-                                    <div class="pcard-text-wrap">
-                                        <h3 class="pcard-title">The Goonies</h3>
-                                        <p class="pcard-subtitle">Parallax Narrative + Cinematic WebGL</p>
-                                    </div>
-                                    <a href="portfolio.html" class="pcard-link" aria-label="Learn more about Goonies">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                                    </a>
-                                </div>
-                                <button class="pcard-button" aria-label="View Experience">View Experience</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 6: Ethereal Beauty -->
-                    <div class="pcard-3d pcard-hover-6" onclick="window.location.href='portfolio.html'">
-                        <div class="pcard-inner">
-                            <img src="assets/images/mockup_ecommerce_1774231400781.png" alt="Ethereal Beauty" class="pcard-bg" loading="lazy">
-                            <div class="pcard-overlay"></div>
-                            <div class="pcard-shine"></div>
-                            <div class="pcard-content">
-                                <div class="pcard-header">
-                                    <div class="pcard-text-wrap">
-                                        <h3 class="pcard-title">Ethereal Beauty</h3>
-                                        <p class="pcard-subtitle">Minimalist E-Commerce + Luxury Identity</p>
-                                    </div>
-                                    <a href="portfolio.html" class="pcard-link" aria-label="Learn more about Ethereal">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                                    </a>
-                                </div>
-                                <button class="pcard-button" aria-label="View Store">View Store</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about section section-hidden">
-            <div class="container">
-                <div class="about__grid">
-                    <div class="about__text">
-                        <h2 class="section__title">About Me</h2>
-                        <p class="about__bio">I craft premium web experiences that blend cutting-edge design with seamless animations. My focus is on creating immersive digital environments that elevate brands to their highest aesthetic potential.</p>
-                        <ul class="about__list">
-                            <li><span>01.</span> Obsession with detail</li>
-                            <li><span>02.</span> Performance-first mentality</li>
-                            <li><span>03.</span> Original, award-worthy design</li>
-                        </ul>
-                        <div style="margin-top: 30px;">
-                            <a href="about.html" class="work__link" style="color: var(--clr-accent-1); border-bottom: 1px solid var(--clr-accent-1); padding-bottom: 5px;">Read Full Bio</a>
-                        </div>
-                    </div>
-                    <div class="about__visual">
-                        <div class="about__img" style="background: linear-gradient(to top right, #333, #000);"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="services" class="services section section-hidden">
-            <!-- Film Grain Overlay -->
-            <div class="services__grain"></div>
-
-            <div class="container services__container">
-                
-                <!-- Section Header -->
-                <div class="services__header">
-                    <span class="services__tagline">WHAT I OFFER</span>
-                    <h2 class="services__title">Services I Provide</h2>
-                    <p class="services__desc">Premium web solutions tailored to your vision and goals</p>
-                </div>
-                
-                <!-- Bento Grid -->
-                <div class="services__grid">
-
-                    <!-- Card 1: Custom Web Design — col 1, row 1 -->
-                    <div class="services__card bento-pos-1">
-                        <img src="assets/images/service_web_design.png" class="services__card-bg" alt="Custom Web Design">
-                        <div class="services__card-overlay"></div>
-                        <div class="services__card-content">
-                            <svg class="services__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-                            <h3 class="services__name">Custom Web Design</h3>
-                            <p class="services__text">Bespoke, pixel-perfect interfaces designed from scratch to uniquely represent your brand identity.</p>
-                        </div>
-                        <div class="services__card-cta">
-                            <a href="contact.html" class="btn-bento-ghost">
-                                Learn more
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Card 2: 3D Animations — col 2-3, row 1 (wide) -->
-                    <div class="services__card bento-pos-2">
-                        <img src="assets/images/service_3d_animations.png" class="services__card-bg" alt="3D Animations">
-                        <div class="services__card-overlay"></div>
-                        <div class="services__card-content">
-                            <svg class="services__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
-                            <h3 class="services__name">3D Animations & Motion</h3>
-                            <p class="services__text">Immersive web experiences using Three.js and GSAP to bring your ideas to life with state-of-the-art motion graphics.</p>
-                        </div>
-                        <div class="services__card-cta">
-                            <a href="contact.html" class="btn-bento-ghost">
-                                Learn more
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Performance — col 3, row 2-3 (tall) -->
-                    <div class="services__card bento-pos-3">
-                        <img src="assets/images/service_performance.png" class="services__card-bg" alt="Performance Optimization">
-                        <div class="services__card-overlay"></div>
-                        <div class="services__card-content">
-                            <svg class="services__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                            <h3 class="services__name">Performance Optimization</h3>
-                            <p class="services__text">Lightning-fast load times and smooth 60fps animations ensuring your premium experience feels flawless on all devices.</p>
-                        </div>
-                        <div class="services__card-cta">
-                            <a href="contact.html" class="btn-bento-ghost">
-                                Learn more
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Card 4: Scroll-Driven — col 1, row 2 -->
-                    <div class="services__card bento-pos-4">
-                        <img src="assets/images/service_scroll_animations.png" class="services__card-bg" alt="Scroll-Driven Experiences">
-                        <div class="services__card-overlay"></div>
-                        <div class="services__card-content">
-                            <svg class="services__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="7"/><path d="M12 6v4"/></svg>
-                            <h3 class="services__name">Scroll-Driven Experiences</h3>
-                            <p class="services__text">Engaging scroll animations and parallax effects that captivate users and guide them through your narrative.</p>
-                        </div>
-                        <div class="services__card-cta">
-                            <a href="contact.html" class="btn-bento-ghost">
-                                Learn more
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Card 5: Full-Stack — col 2, row 2 -->
-                    <div class="services__card bento-pos-5">
-                        <img src="assets/images/service_fullstack.png" class="services__card-bg" alt="Full-Stack Development">
-                        <div class="services__card-overlay"></div>
-                        <div class="services__card-content">
-                            <svg class="services__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                            <h3 class="services__name">Full-Stack Development</h3>
-                            <p class="services__text">Complete digital solutions from concept to deployment. HTML, CSS, JavaScript, React, and modern frameworks.</p>
-                        </div>
-                        <div class="services__card-cta">
-                            <a href="contact.html" class="btn-bento-ghost">
-                                Learn more
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Card 6: UX/UI — col 1-2, row 3 (wide) -->
-                    <div class="services__card bento-pos-6">
-                        <img src="assets/images/service_ux_ui.png" class="services__card-bg" alt="UX/UI Enhancement">
-                        <div class="services__card-overlay"></div>
-                        <div class="services__card-content">
-                            <svg class="services__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
-                            <h3 class="services__name">UX/UI Enhancement</h3>
-                            <p class="services__text">User-centered design approach with rigorous testing and iteration to ensure every interaction feels intuitive and delightful.</p>
-                        </div>
-                        <div class="services__card-cta">
-                            <a href="contact.html" class="btn-bento-ghost">
-                                Learn more
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-                
-                <div class="services__cta-wrapper">
-                    <a href="services.html" class="btn-services-primary">
-                        View All Services
-                        <svg class="icon-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Process Section -->
-        <section id="process" class="process section section-hidden">
-            <div class="container">
-                <!-- Section Header -->
-                <div class="process__header">
-                    <h2 class="process__title">Comment ça marche</h2>
-                    <p class="process__subtitle">Une approche méthodique et créative pour transformer vos visions en expériences numériques d'exception.</p>
-                </div>
-
-
-                <!-- Steps Grid -->
-                <div class="process__grid">
-                    
-                    <!-- Step 1: Strategy -->
-                    <div class="process__card">
-                        <div class="process__card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        </div>
-                        <h3 class="process__card-title">Stratégie & Découverte</h3>
-                        <p class="process__card-desc">Nous explorons votre vision pour bâtir une fondation stratégique solide pour votre présence numérique.</p>
-                        <ul class="process__benefits">
-                            <li class="process__benefit-item">
-                                <div class="process__benefit-bullet"><div class="process__benefit-dot"></div></div>
-                                <span class="process__benefit-text">Analyse approfondie du marché</span>
-                            </li>
-                            <li class="process__benefit-item">
-                                <div class="process__benefit-bullet"><div class="process__benefit-dot"></div></div>
-                                <span class="process__benefit-text">Définition de l'identité de marque</span>
-                            </li>
-                            <li class="process__benefit-item">
-                                <div class="process__benefit-bullet"><div class="process__benefit-dot"></div></div>
-                                <span class="process__benefit-text">Feuille de route détaillée du projet</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Step 2: Design -->
-                    <div class="process__card">
-                        <div class="process__card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                        </div>
-                        <h3 class="process__card-title">Design & Expérience</h3>
-                        <p class="process__card-desc">Traduction de la stratégie en visuels haute fidélité et prototypes interactifs axés sur l'expérience utilisateur.</p>
-                        <ul class="process__benefits">
-                            <li class="process__benefit-item">
-                                <div class="process__benefit-bullet"><div class="process__benefit-dot"></div></div>
-                                <span class="process__benefit-text">Systèmes de design UI/UX modulaires</span>
-                            </li>
-                            <li class="process__benefit-item">
-                                <div class="process__benefit-bullet"><div class="process__benefit-dot"></div></div>
-                                <span class="process__benefit-text">Prototypes de mouvement interactifs</span>
-                            </li>
-                            <li class="process__benefit-item">
-                                <div class="process__benefit-bullet"><div class="process__benefit-dot"></div></div>
-                                <span class="process__benefit-text">Cartographie des flux utilisateurs</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Step 3: Development -->
-                    <div class="process__card">
-                        <div class="process__card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                        </div>
-                        <h3 class="process__card-title">Développement & Motion</h3>
-                        <p class="process__card-desc">Transformation des designs en code performant, propre et accessible en utilisant les dernières technologies.</p>
-                        <ul class="process__benefits">
-                            <li class="process__benefit-item">
-                                <div class="process__benefit-bullet"><div class="process__benefit-dot"></div></div>
-                                <span class="process__benefit-text">Animations fluides à 60fps (GSAP)</span>
-                            </li>
-                            <li class="process__benefit-item">
-                                <div class="process__benefit-bullet"><div class="process__benefit-dot"></div></div>
-                                <span class="process__benefit-text">Implémentation pixel-perfect</span>
-                            </li>
-                            <li class="process__benefit-item">
-                                <div class="process__benefit-bullet"><div class="process__benefit-dot"></div></div>
-                                <span class="process__benefit-text">Optimisation SEO & Performance</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Tech Stack Section -->
-        <section class="tech section section-hidden">
-            <div class="container">
-                <h2 class="section__title">Tech Stack</h2>
-                <!-- Infinite Marquee -->
-                <div class="marquee-wrapper">
-                    <div class="marquee-track">
-                        <div class="marquee-content">
-                            <div class="tech__category">
-                                <h3 class="tech__name">DESIGN</h3>
-                                <div class="tech__tags">
-                                    <span class="tech__tag">Figma</span>
-                                    <span class="tech__tag">Adobe XD</span>
-                                </div>
-                            </div>
-                            <div class="tech__category">
-                                <h3 class="tech__name">FRONTEND</h3>
-                                <div class="tech__tags">
-                                    <span class="tech__tag">HTML5</span>
-                                    <span class="tech__tag">CSS3</span>
-                                    <span class="tech__tag">JavaScript (ES6+)</span>
-                                    <span class="tech__tag">React</span>
-                                </div>
-                            </div>
-                            <div class="tech__category">
-                                <h3 class="tech__name">ANIMATION</h3>
-                                <div class="tech__tags">
-                                    <span class="tech__tag">GSAP</span>
-                                    <span class="tech__tag">Three.js</span>
-                                    <span class="tech__tag">Canvas API</span>
-                                </div>
-                            </div>
-                            <div class="tech__category">
-                                <h3 class="tech__name">DEPLOYMENT</h3>
-                                <div class="tech__tags">
-                                    <span class="tech__tag">Netlify</span>
-                                    <span class="tech__tag">Vercel</span>
-                                    <span class="tech__tag">GitHub</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Duplicated for seamless loop -->
-                        <div class="marquee-content" aria-hidden="true">
-                            <div class="tech__category">
-                                <h3 class="tech__name">DESIGN</h3>
-                                <div class="tech__tags">
-                                    <span class="tech__tag">Figma</span>
-                                    <span class="tech__tag">Adobe XD</span>
-                                </div>
-                            </div>
-                            <div class="tech__category">
-                                <h3 class="tech__name">FRONTEND</h3>
-                                <div class="tech__tags">
-                                    <span class="tech__tag">HTML5</span>
-                                    <span class="tech__tag">CSS3</span>
-                                    <span class="tech__tag">JavaScript (ES6+)</span>
-                                    <span class="tech__tag">React</span>
-                                </div>
-                            </div>
-                            <div class="tech__category">
-                                <h3 class="tech__name">ANIMATION</h3>
-                                <div class="tech__tags">
-                                    <span class="tech__tag">GSAP</span>
-                                    <span class="tech__tag">Three.js</span>
-                                    <span class="tech__tag">Canvas API</span>
-                                </div>
-                            </div>
-                            <div class="tech__category">
-                                <h3 class="tech__name">DEPLOYMENT</h3>
-                                <div class="tech__tags">
-                                    <span class="tech__tag">Netlify</span>
-                                    <span class="tech__tag">Vercel</span>
-                                    <span class="tech__tag">GitHub</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Infinite Testimonials Section -->
-        <section class="premium-testimonials section section-hidden" id="testimonials">
-            <div class="container" style="max-width: 1400px; padding: 0 4vw;">
-                
-                <!-- Header -->
-                <div class="pt-header">
-                    <div class="pt-badge">CLIENT FEEDBACK</div>
-                    <h2 class="pt-title">What My Clients Say</h2>
-                    <p class="pt-desc">Discover how clients transform their online presence with premium web experiences that drive results.</p>
-                </div>
-
-                <!-- Scrolling Area -->
-                <div class="pt-grid-wrapper">
-                        
-                        <!-- Column 1 (15s) -->
-                        <div class="pt-col pt-col-1">
-                            <ul class="pt-track pt-track-15">
-                                <!-- Original Set -->
-                                <li class="pt-card">
-                                    <blockquote class="pt-quote">"Gabriel completely transformed our website. The animations are stunning and the performance is incredible. Our conversions increased by 40%!"</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150" alt="Sarah Johnson" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">Sarah Johnson</cite>
-                                            <span class="pt-role">E-commerce Owner</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="pt-card">
-                                    <blockquote class="pt-quote">"Working with Gabriel was a pleasure. He understood our vision perfectly and delivered a site that exceeded all expectations. Highly recommended!"</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150" alt="Michael Chen" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">Michael Chen</cite>
-                                            <span class="pt-role">Startup Founder</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="pt-card">
-                                    <blockquote class="pt-quote">"The level of attention to detail is unmatched. Every interaction feels premium and intentional. Best investment we've made for our brand."</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150" alt="Lisa Martinez" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">Lisa Martinez</cite>
-                                            <span class="pt-role">Marketing Director</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                
-                                <!-- Duplicate Set for Infinite Scroll -->
-                                <li class="pt-card" aria-hidden="true" tabindex="-1">
-                                    <blockquote class="pt-quote">"Gabriel completely transformed our website. The animations are stunning and the performance is incredible. Our conversions increased by 40%!"</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150" alt="Sarah Johnson" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">Sarah Johnson</cite>
-                                            <span class="pt-role">E-commerce Owner</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="pt-card" aria-hidden="true" tabindex="-1">
-                                    <blockquote class="pt-quote">"Working with Gabriel was a pleasure. He understood our vision perfectly and delivered a site that exceeded all expectations. Highly recommended!"</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150" alt="Michael Chen" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">Michael Chen</cite>
-                                            <span class="pt-role">Startup Founder</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="pt-card" aria-hidden="true" tabindex="-1">
-                                    <blockquote class="pt-quote">"The level of attention to detail is unmatched. Every interaction feels premium and intentional. Best investment we've made for our brand."</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150" alt="Lisa Martinez" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">Lisa Martinez</cite>
-                                            <span class="pt-role">Marketing Director</span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Column 2 (19s) -->
-                        <div class="pt-col pt-col-2">
-                            <ul class="pt-track pt-track-19">
-                                <!-- Original Set -->
-                                <li class="pt-card">
-                                    <blockquote class="pt-quote">"Amazing work! Our new site is lightning fast and looks absolutely beautiful. Gabriel's animations really set us apart from competitors."</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150" alt="James Thompson" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">James Thompson</cite>
-                                            <span class="pt-role">Agency Director</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="pt-card">
-                                    <blockquote class="pt-quote">"The custom design and smooth animations have elevated our brand presence significantly. Gabriel is a true professional."</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150" alt="Emma Wilson" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">Emma Wilson</cite>
-                                            <span class="pt-role">Creative Director</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="pt-card">
-                                    <blockquote class="pt-quote">"Impressive technical skills combined with great design sense. Gabriel delivered exactly what we needed and more."</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150&h=150" alt="David Kim" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">David Kim</cite>
-                                            <span class="pt-role">Product Manager</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                
-                                <!-- Duplicate Set for Infinite Scroll -->
-                                <li class="pt-card" aria-hidden="true" tabindex="-1">
-                                    <blockquote class="pt-quote">"Amazing work! Our new site is lightning fast and looks absolutely beautiful. Gabriel's animations really set us apart from competitors."</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150" alt="James Thompson" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">James Thompson</cite>
-                                            <span class="pt-role">Agency Director</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="pt-card" aria-hidden="true" tabindex="-1">
-                                    <blockquote class="pt-quote">"The custom design and smooth animations have elevated our brand presence significantly. Gabriel is a true professional."</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150" alt="Emma Wilson" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">Emma Wilson</cite>
-                                            <span class="pt-role">Creative Director</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="pt-card" aria-hidden="true" tabindex="-1">
-                                    <blockquote class="pt-quote">"Impressive technical skills combined with great design sense. Gabriel delivered exactly what we needed and more."</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150&h=150" alt="David Kim" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">David Kim</cite>
-                                            <span class="pt-role">Product Manager</span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Column 3 (17s) -->
-                        <div class="pt-col pt-col-3">
-                            <ul class="pt-track pt-track-17">
-                                <!-- Original Set -->
-                                <li class="pt-card">
-                                    <blockquote class="pt-quote">"The website is not just beautiful, it's incredibly functional. Our users love the experience. Worth every penny!"</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150" alt="Rachel Green" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">Rachel Green</cite>
-                                            <span class="pt-role">Business Owner</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="pt-card">
-                                    <blockquote class="pt-quote">"Gabriel's attention to performance and user experience shows in every detail. Our website is now our best marketing tool."</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150" alt="Carlos Rodriguez" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">Carlos Rodriguez</cite>
-                                            <span class="pt-role">CEO</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="pt-card">
-                                    <blockquote class="pt-quote">"Best decision we made hiring Gabriel. The site performs beautifully and our engagement metrics have improved dramatically."</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150" alt="Anna Patel" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">Anna Patel</cite>
-                                            <span class="pt-role">Founder</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                
-                                <!-- Duplicate Set for Infinite Scroll -->
-                                <li class="pt-card" aria-hidden="true" tabindex="-1">
-                                    <blockquote class="pt-quote">"The website is not just beautiful, it's incredibly functional. Our users love the experience. Worth every penny!"</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150" alt="Rachel Green" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">Rachel Green</cite>
-                                            <span class="pt-role">Business Owner</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="pt-card" aria-hidden="true" tabindex="-1">
-                                    <blockquote class="pt-quote">"Gabriel's attention to performance and user experience shows in every detail. Our website is now our best marketing tool."</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150" alt="Carlos Rodriguez" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">Carlos Rodriguez</cite>
-                                            <span class="pt-role">CEO</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="pt-card" aria-hidden="true" tabindex="-1">
-                                    <blockquote class="pt-quote">"Best decision we made hiring Gabriel. The site performs beautifully and our engagement metrics have improved dramatically."</blockquote>
-                                    <div class="pt-client">
-                                        <div class="pt-avatar"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150" alt="Anna Patel" loading="lazy"></div>
-                                        <div class="pt-client-info">
-                                            <cite class="pt-name">Anna Patel</cite>
-                                            <span class="pt-role">Founder</span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- Contact Section (Let's Work Together) -->
-        <section id="contact" class="contact section section-hidden">
-            <!-- Film Grain Overlay -->
-            <div class="contact__grain"></div>
+        <!-- ✨ HERO SECTION -->
+        <section class="hero" id="home">
+            <video class="hero-video" playsinline muted autoplay loop>
+                <source src="assets/videos/hero-design-process.mp4" type="video/mp4">
+            </video>
             
-            <div class="container contact__container">
-                <div class="contact__header">
-                    <span class="contact__tagline">LET'S WORK TOGETHER</span>
-                    <h2 class="contact__title">Ready to bring your vision to life?</h2>
-                    <p class="contact__desc">Have a project in mind? Let's discuss your next big idea. Drop a message or schedule a call to explore the possibilities together.</p>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-icon">✨</span>
+                    <span class="badge-text">Award-Winning Studio</span>
                 </div>
 
-                <div class="contact__options">
-                    
-                    <!-- Option 1: Email -->
-                    <div class="contact__card">
-                        <div class="contact__icon-wrapper">
-                            <svg class="contact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <div class="hero-headline">
+                    <h1 class="hero-title">
+                        <span class="word">I</span>
+                        <span class="word">craft</span>
+                        <span class="word">immersive</span>
+                        <br>
+                        <span class="word">digital</span>
+                        <span class="word">experiences</span>
+                    </h1>
+                </div>
+
+                <p class="hero-subtitle">Premium web design • 3D animations • Scroll-driven experiences</p>
+
+                <div class="hero-ctas">
+                    <button class="cta cta-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                        Let's Build
+                        <svg class="cta-icon" width="16" height="16" viewBox="0 0 16 16">
+                            <path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <button class="cta cta-secondary" onclick="document.getElementById('work').scrollIntoView({behavior: 'smooth'})">Explore Work</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🎨 PORTFOLIO SECTION -->
+        <section class="portfolio" id="work">
+            <div class="portfolio-header">
+                <h2 class="section-title">Featured Work</h2>
+                <p class="section-desc">Explore a selection of premium web experiences crafted with intention and precision.</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Featured Card -->
+                <article class="portfolio-card featured-card" data-index="0" onclick="window.location.href='portfolio.html'">
+                    <div class="card-image">
+                        <img src="assets/images/mockup_hmc_industrial_1774231318066.png" alt="HMC Industrial" loading="lazy">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>HMC Industrial</h3>
+                        <p>Premium Design + Dark Aesthetic</p>
+                        <span class="card-link">
+                            View Project
+                            <svg class="link-icon" width="14" height="14" viewBox="0 0 14 14">
+                                <path d="M1 13l12-12M13 13V1H1" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            </svg>
+                        </span>
+                    </div>
+                </article>
+                
+                <!-- Standard Cards -->
+                <article class="portfolio-card" data-index="1" onclick="window.location.href='portfolio.html'">
+                    <div class="card-image">
+                        <img src="assets/images/mockup_surf_spots_1774231333582.png" alt="Spots de Surf" loading="lazy">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Spots de Surf</h3>
+                        <p>3D Scroll Animation + Map Integration</p>
+                        <span class="card-link">
+                            View Project
+                            <svg class="link-icon" width="14" height="14" viewBox="0 0 14 14">
+                                <path d="M1 13l12-12M13 13V1H1" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            </svg>
+                        </span>
+                    </div>
+                </article>
+
+                <article class="portfolio-card" data-index="2" onclick="window.location.href='portfolio.html'">
+                    <div class="card-image">
+                        <img src="assets/images/mockup_dartmaster_1774231350727.png" alt="DartMaster Pro" loading="lazy">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>DartMaster Pro</h3>
+                        <p>Premium Glassmorphism + Live Scoring</p>
+                        <span class="card-link">
+                            View App
+                            <svg class="link-icon" width="14" height="14" viewBox="0 0 14 14">
+                                <path d="M1 13l12-12M13 13V1H1" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            </svg>
+                        </span>
+                    </div>
+                </article>
+
+                <article class="portfolio-card" data-index="3" onclick="window.location.href='portfolio.html'">
+                    <div class="card-image">
+                        <img src="assets/images/mockup_academie_1774231369729.png" alt="Académie Platform" loading="lazy">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Académie Platform</h3>
+                        <p>Gamified Education + Interactive UI</p>
+                        <span class="card-link">
+                            View Case Study
+                            <svg class="link-icon" width="14" height="14" viewBox="0 0 14 14">
+                                <path d="M1 13l12-12M13 13V1H1" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            </svg>
+                        </span>
+                    </div>
+                </article>
+
+                <article class="portfolio-card" data-index="4" onclick="window.location.href='portfolio.html'">
+                    <div class="card-image">
+                        <img src="assets/images/mockup_goonies_1774231385157.png" alt="The Goonies" loading="lazy">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>The Goonies</h3>
+                        <p>Parallax Narrative + Cinematic WebGL</p>
+                        <span class="card-link">
+                            View Experience
+                            <svg class="link-icon" width="14" height="14" viewBox="0 0 14 14">
+                                <path d="M1 13l12-12M13 13V1H1" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            </svg>
+                        </span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 💼 SERVICES SECTION -->
+        <section class="services" id="services">
+            <div class="services-header">
+                <h2 class="section-title">Services</h2>
+            </div>
+
+            <div class="services-list">
+                <!-- Alternating direction via CSS nth-child(even) -->
+                <article class="service-item">
+                    <div class="service-text">
+                        <h3 class="service-title">Custom Web Design</h3>
+                        <p class="service-description">Bespoke, pixel-perfect interfaces designed from scratch to uniquely represent your brand identity.</p>
+                        <ul class="service-features">
+                            <li>UI/UX Design</li>
+                            <li>Design Systems</li>
+                            <li>Brand Identity</li>
+                        </ul>
+                    </div>
+                    <div class="service-image">
+                        <img src="assets/images/service_web_design.png" alt="Web Design Service" loading="lazy">
+                    </div>
+                </article>
+
+                <article class="service-item">
+                    <div class="service-text">
+                        <h3 class="service-title">3D Animations & Motion</h3>
+                        <p class="service-description">Immersive web experiences using GSAP and WebGL to bring your ideas to life with state-of-the-art motion graphics.</p>
+                        <ul class="service-features">
+                            <li>Scroll-Driven Experiences</li>
+                            <li>Micro-interactions</li>
+                            <li>WebGL & Canvas</li>
+                        </ul>
+                    </div>
+                    <div class="service-image">
+                        <img src="assets/images/service_3d_animations.png" alt="Animation Service" loading="lazy">
+                    </div>
+                </article>
+
+                <article class="service-item">
+                    <div class="service-text">
+                        <h3 class="service-title">Performance Optimization</h3>
+                        <p class="service-description">Lightning-fast load times and smooth 60fps animations ensuring your premium experience feels flawless.</p>
+                        <ul class="service-features">
+                            <li>Core Web Vitals</li>
+                            <li>Asset Optimization</li>
+                            <li>SEO Architecture</li>
+                        </ul>
+                    </div>
+                    <div class="service-image">
+                        <img src="assets/images/service_performance.png" alt="Performance Service" loading="lazy">
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 💬 TESTIMONIALS SECTION -->
+        <section class="testimonials" id="about">
+            <div class="testimonials-header">
+                <h2 class="section-title">What Clients Say</h2>
+            </div>
+
+            <div class="testimonials-container">
+                <div class="testimonial-item active">
+                    <blockquote class="testimonial-quote">
+                        Gabriel completely transformed our website. The animations are stunning and the performance is incredible. Our conversions increased by 40%!
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150" alt="Sarah Johnson" class="author-avatar" loading="lazy">
+                        <div class="author-info">
+                            <div class="author-name">Sarah Johnson</div>
+                            <div class="author-role">E-commerce Owner</div>
                         </div>
-                        <h3 class="contact__card-title">Send us a Message</h3>
-                        <p class="contact__card-desc">Drop us a line and we'll get back to you within 24 hours</p>
-                        <a href="mailto:hello@gabrielbures.com" class="btn-contact-primary">
-                            Send Email
-                            <svg class="icon-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </a>
-                        <a href="mailto:hello@gabrielbures.com" class="contact__card-meta">hello@gabrielbures.com</a>
                     </div>
+                </div>
 
-                    <!-- Option 2: Calendar -->
-                    <div class="contact__card">
-                        <div class="contact__icon-wrapper">
-                            <svg class="contact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg>
+                <div class="testimonial-item">
+                    <blockquote class="testimonial-quote">
+                        Working with Gabriel was a pleasure. He understood our vision perfectly and delivered a site that exceeded all expectations. The attention to detail is unmatched.
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150" alt="Michael Chen" class="author-avatar" loading="lazy">
+                        <div class="author-info">
+                            <div class="author-name">Michael Chen</div>
+                            <div class="author-role">Startup Founder</div>
                         </div>
-                        <h3 class="contact__card-title">Schedule a Call</h3>
-                        <p class="contact__card-desc">Book a 15-30 minute intro call to discuss your project</p>
-                        <a href="https://cal.com/gabrielbures" target="_blank" rel="noopener noreferrer" class="btn-contact-primary">
-                            Book a Call
-                            <svg class="icon-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                        </a>
-                        <span class="contact__card-meta" style="color: var(--clr-text-secondary); text-decoration: none;">100% confidential. No commitment.</span>
-                    </div>
-
-                </div>
-
-                <div class="contact__socials-wrapper">
-                    <span class="contact__socials-text">Or connect with me on</span>
-                    <div class="contact__socials">
-                        <a href="#" aria-label="Instagram" class="contact__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-                        <a href="#" aria-label="LinkedIn" class="contact__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-                        <a href="#" aria-label="GitHub" class="contact__social-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
                     </div>
                 </div>
 
+                <div class="testimonial-item">
+                    <blockquote class="testimonial-quote">
+                        The level of attention to detail is unmatched. Every interaction feels premium and intentional. Best investment we've made for our brand.
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150" alt="Lisa Martinez" class="author-avatar" loading="lazy">
+                        <div class="author-info">
+                            <div class="author-name">Lisa Martinez</div>
+                            <div class="author-role">Marketing Director</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonials-nav">
+                <button class="dot active" data-index="0" aria-label="View testimonial 1"></button>
+                <button class="dot" data-index="1" aria-label="View testimonial 2"></button>
+                <button class="dot" data-index="2" aria-label="View testimonial 3"></button>
+            </div>
+        </section>
+
+        <!-- 🔥 CTA SECTION -->
+        <section class="cta-section" id="contact">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Transform Your Digital Presence?</h2>
+                <p class="cta-subtitle">Let's create something exceptional together.</p>
+                <button class="cta-button" onclick="window.location.href='contact.html'">
+                    Schedule a Free Consultation
+                    <svg class="button-icon" width="18" height="18" viewBox="0 0 18 18">
+                        <path d="M1 9h16M11 2l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    </svg>
+                </button>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="container footer__container">
-            <p class="footer__copy">&copy; 2026 STUDIO. All rights reserved.</p>
-            <div class="footer__links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="footer-logo">STUDIO</div>
+                <p class="footer-copy">© 2026 Gabriel Studio.<br>Premium digital experiences.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#work" class="footer-link">Work</a>
+                <a href="#services" class="footer-link">Services</a>
+                <a href="#contact" class="footer-link">Contact</a>
+            </div>
+            <div class="footer-socials">
+                <a href="#" class="social-link" aria-label="Twitter">Twitter</a>
+                <a href="#" class="social-link" aria-label="LinkedIn">LinkedIn</a>
+                <a href="#" class="social-link" aria-label="Dribbble">Dribbble</a>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="script.js?v=2"></script>
+    <!-- GSAP Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="script.js"></script>
 </body>
 </html>
