@@ -180,6 +180,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if(window.gsap && window.ScrollTrigger) {
         gsap.registerPlugin(ScrollTrigger);
 
+        // Hero Video Scale Parallax
+        const heroVideoWrapper = document.querySelector('.hero-video-wrapper');
+        const heroContainer = document.querySelector('.hero-container');
+        if (heroVideoWrapper && heroContainer) {
+            gsap.fromTo(heroVideoWrapper, 
+                { scale: 1 },
+                { 
+                    scale: 1.2, 
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: heroContainer,
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                }
+            );
+        }
+
         // Sections Fade In (General)
         document.querySelectorAll('.section-hidden:not(.portfolio)').forEach(section => {
             gsap.to(section, {
@@ -295,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 {
                     opacity: 1, y: 0,
                     duration: 0.6,
-                    ease: "power2.out",
+                    ease: "power3.out",
                     stagger: 0.1,
                     scrollTrigger: {
                         trigger: servicesGrid,
@@ -316,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     opacity: 1, y: 0,
                     duration: 0.8,
                     delay: 0.2, // global delay specified by user
-                    ease: "power2.out",
+                    ease: "power3.out",
                     stagger: 0.1, // delay between option1 and option2
                     scrollTrigger: {
                         trigger: contactOptions,
@@ -336,11 +355,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 {
                     opacity: 1, y: 0, rotation: 0,
                     duration: 1.2,
-                    ease: "power3.out", // close to 0.16,1,0.3,1
+                    ease: "power3.out",
                     stagger: 0.15,
                     scrollTrigger: {
                         trigger: ptGrid,
-                        start: "top 85%",
+                        start: "top 80%",
                         toggleActions: "play none none none"
                     }
                 }
@@ -475,7 +494,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             requestAnimationFrame(() => {
                 const parallaxY = scrollProgress * -100;
-                heroContent.style.transform = `translate(-50%, calc(-50% + ${parallaxY}px))`;
+                heroContent.style.transform = `translateY(${parallaxY}px)`;
 
                 if (scrollProgress >= 0.1) headline.classList.add('is-visible');
                 else headline.classList.remove('is-visible');
